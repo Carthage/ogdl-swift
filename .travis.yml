@@ -1,0 +1,11 @@
+language: objective-c
+osx_image: xcode611
+before_install: true
+install: true
+git:
+  submodules: false
+script: script/cibuild
+notifications:
+  email: false
+  slack:
+    secure: AL1z10EG8E48B4/LYwwu23fHocTWXG0sIVOUoxHuyLIJGj7ml7UXINkXupKbZiIJAnGudMqaNvl92OlQQblb7i7v0UHEuOtpobfSDy1xRZIy/18EhzFRHZGYQHIqIAAPvZWequdo2yKHED3fMAA9b//rpg28aOpN/n+DhykKU+4=
