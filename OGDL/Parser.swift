@@ -37,3 +37,19 @@ internal func - (characterSet: NSCharacterSet, subtrahend: NSCharacterSet) -> NS
 	mutableSet.formIntersectionWithCharacterSet(subtrahend.invertedSet)
 	return mutableSet
 }
+
+private let char_control = NSCharacterSet(range: NSRange(location: 0, length: 32))
+private let char_text = char_control.invertedSet
+private let char_word = char_text - ",()"
+private let char_space = NSCharacterSet.whitespaceCharacterSet()
+private let char_break = NSCharacterSet.newlineCharacterSet()
+private let char_end = char_control - NSCharacterSet.whitespaceAndNewlineCharacterSet()
+
+private let wordStart = %(char_word - "#'\"")
+private let wordChar = %(char_word - "'\"")
+private let word = wordStart+ ++ wordChar*
+private let string = (%char_text | %char_space)+
+private let br = %char_break
+private let comment = %"#" ++ ignore(string) ++ br
+private let quoted = (%"'" ++ string ++ %"'") | (%"\"" ++ string ++ %"\"")
+private let space = (%char_space)+
