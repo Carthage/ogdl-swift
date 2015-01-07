@@ -10,6 +10,14 @@
 		D00F9CDB1A5DC12500B4851E /* OGDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00F9CD01A5DC12500B4851E /* OGDL.framework */; };
 		D00F9CE91A5DC1C700B4851E /* OGDLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BBBFCD1A5DBF26007913DA /* OGDLTests.swift */; };
 		D00F9CEA1A5DC1C900B4851E /* OGDL.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BBBFC01A5DBF26007913DA /* OGDL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D00F9CEF1A5DC45D00B4851E /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00F9CEB1A5DC45D00B4851E /* Box.framework */; };
+		D00F9CF01A5DC45D00B4851E /* Either.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00F9CEC1A5DC45D00B4851E /* Either.framework */; };
+		D00F9CF11A5DC45D00B4851E /* Madness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00F9CED1A5DC45D00B4851E /* Madness.framework */; };
+		D00F9CF21A5DC45D00B4851E /* Prelude.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00F9CEE1A5DC45D00B4851E /* Prelude.framework */; };
+		D00F9CF31A5DC47500B4851E /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00F9CEB1A5DC45D00B4851E /* Box.framework */; };
+		D00F9CF41A5DC47500B4851E /* Either.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00F9CEC1A5DC45D00B4851E /* Either.framework */; };
+		D00F9CF51A5DC47500B4851E /* Madness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00F9CED1A5DC45D00B4851E /* Madness.framework */; };
+		D00F9CF61A5DC47500B4851E /* Prelude.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00F9CEE1A5DC45D00B4851E /* Prelude.framework */; };
 		D0BBBFC11A5DBF26007913DA /* OGDL.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BBBFC01A5DBF26007913DA /* OGDL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0BBBFC71A5DBF26007913DA /* OGDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BBBFBB1A5DBF26007913DA /* OGDL.framework */; };
 		D0BBBFCE1A5DBF26007913DA /* OGDLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BBBFCD1A5DBF26007913DA /* OGDLTests.swift */; };
@@ -53,6 +61,10 @@
 		D00F9CCA1A5DC0CA00B4851E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D00F9CD01A5DC12500B4851E /* OGDL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OGDL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D00F9CDA1A5DC12500B4851E /* OGDL-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OGDL-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D00F9CEB1A5DC45D00B4851E /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Box.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D00F9CEC1A5DC45D00B4851E /* Either.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Either.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D00F9CED1A5DC45D00B4851E /* Madness.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Madness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D00F9CEE1A5DC45D00B4851E /* Prelude.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Prelude.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BBBFBB1A5DBF26007913DA /* OGDL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OGDL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BBBFBF1A5DBF26007913DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0BBBFC01A5DBF26007913DA /* OGDL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGDL.h; sourceTree = "<group>"; };
@@ -81,6 +93,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D00F9CEF1A5DC45D00B4851E /* Box.framework in Frameworks */,
+				D00F9CF01A5DC45D00B4851E /* Either.framework in Frameworks */,
+				D00F9CF11A5DC45D00B4851E /* Madness.framework in Frameworks */,
+				D00F9CF21A5DC45D00B4851E /* Prelude.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +105,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0BBBFC71A5DBF26007913DA /* OGDL.framework in Frameworks */,
+				D00F9CF31A5DC47500B4851E /* Box.framework in Frameworks */,
+				D00F9CF41A5DC47500B4851E /* Either.framework in Frameworks */,
+				D00F9CF51A5DC47500B4851E /* Madness.framework in Frameworks */,
+				D00F9CF61A5DC47500B4851E /* Prelude.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +214,10 @@
 		D0BBBFBE1A5DBF26007913DA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D00F9CEB1A5DC45D00B4851E /* Box.framework */,
+				D00F9CEC1A5DC45D00B4851E /* Either.framework */,
+				D00F9CED1A5DC45D00B4851E /* Madness.framework */,
+				D00F9CEE1A5DC45D00B4851E /* Prelude.framework */,
 				D0BBBFBF1A5DBF26007913DA /* Info.plist */,
 			);
 			name = "Supporting Files";
