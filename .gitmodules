@@ -1,0 +1,6 @@
+[submodule "Carthage/Checkouts/Madness"]
+	path = Carthage/Checkouts/Madness
+	url = https://github.com/robrix/Madness.git
+[submodule "Carthage/Checkouts/xcconfigs"]
+	path = Carthage/Checkouts/xcconfigs
+	url = https://github.com/jspahrsummers/xcconfigs.git
