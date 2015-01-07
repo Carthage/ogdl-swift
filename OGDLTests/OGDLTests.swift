@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Nimble
+import Quick
 import XCTest
 
 class OGDLTests: XCTestCase {
