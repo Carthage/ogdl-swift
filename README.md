@@ -1,2 +1,3 @@
 # ogdl-swift
-An OGDL parser, written in Swift
+
+An [OGDL](http://www.ogdl.org) parser, written in Swift.
