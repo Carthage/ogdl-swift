@@ -23,6 +23,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D00F9CB51A5DC0CA00B4851E /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
+		D00F9CB71A5DC0CA00B4851E /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		D00F9CB81A5DC0CA00B4851E /* Profile.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Profile.xcconfig; sourceTree = "<group>"; };
+		D00F9CB91A5DC0CA00B4851E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		D00F9CBA1A5DC0CA00B4851E /* Test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Test.xcconfig; sourceTree = "<group>"; };
+		D00F9CBC1A5DC0CA00B4851E /* Application.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Application.xcconfig; sourceTree = "<group>"; };
+		D00F9CBD1A5DC0CA00B4851E /* Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Framework.xcconfig; sourceTree = "<group>"; };
+		D00F9CBE1A5DC0CA00B4851E /* StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = StaticLibrary.xcconfig; sourceTree = "<group>"; };
+		D00F9CC01A5DC0CA00B4851E /* iOS-Application.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-Application.xcconfig"; sourceTree = "<group>"; };
+		D00F9CC11A5DC0CA00B4851E /* iOS-Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-Base.xcconfig"; sourceTree = "<group>"; };
+		D00F9CC21A5DC0CA00B4851E /* iOS-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-Framework.xcconfig"; sourceTree = "<group>"; };
+		D00F9CC31A5DC0CA00B4851E /* iOS-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
+		D00F9CC51A5DC0CA00B4851E /* Mac-Application.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Application.xcconfig"; sourceTree = "<group>"; };
+		D00F9CC61A5DC0CA00B4851E /* Mac-Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Base.xcconfig"; sourceTree = "<group>"; };
+		D00F9CC71A5DC0CA00B4851E /* Mac-DynamicLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-DynamicLibrary.xcconfig"; sourceTree = "<group>"; };
+		D00F9CC81A5DC0CA00B4851E /* Mac-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Framework.xcconfig"; sourceTree = "<group>"; };
+		D00F9CC91A5DC0CA00B4851E /* Mac-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
+		D00F9CCA1A5DC0CA00B4851E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D0BBBFBB1A5DBF26007913DA /* OGDL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OGDL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BBBFBF1A5DBF26007913DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0BBBFC01A5DBF26007913DA /* OGDL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGDL.h; sourceTree = "<group>"; };
@@ -50,11 +68,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D00F9CB31A5DC0CA00B4851E /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				D00F9CB41A5DC0CA00B4851E /* Base */,
+				D00F9CBF1A5DC0CA00B4851E /* iOS */,
+				D00F9CC41A5DC0CA00B4851E /* Mac OS X */,
+				D00F9CCA1A5DC0CA00B4851E /* README.md */,
+			);
+			name = Configuration;
+			path = Carthage/Checkouts/xcconfigs;
+			sourceTree = "<group>";
+		};
+		D00F9CB41A5DC0CA00B4851E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D00F9CB51A5DC0CA00B4851E /* Common.xcconfig */,
+				D00F9CB61A5DC0CA00B4851E /* Configurations */,
+				D00F9CBB1A5DC0CA00B4851E /* Targets */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		D00F9CB61A5DC0CA00B4851E /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				D00F9CB71A5DC0CA00B4851E /* Debug.xcconfig */,
+				D00F9CB81A5DC0CA00B4851E /* Profile.xcconfig */,
+				D00F9CB91A5DC0CA00B4851E /* Release.xcconfig */,
+				D00F9CBA1A5DC0CA00B4851E /* Test.xcconfig */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		D00F9CBB1A5DC0CA00B4851E /* Targets */ = {
+			isa = PBXGroup;
+			children = (
+				D00F9CBC1A5DC0CA00B4851E /* Application.xcconfig */,
+				D00F9CBD1A5DC0CA00B4851E /* Framework.xcconfig */,
+				D00F9CBE1A5DC0CA00B4851E /* StaticLibrary.xcconfig */,
+			);
+			path = Targets;
+			sourceTree = "<group>";
+		};
+		D00F9CBF1A5DC0CA00B4851E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D00F9CC01A5DC0CA00B4851E /* iOS-Application.xcconfig */,
+				D00F9CC11A5DC0CA00B4851E /* iOS-Base.xcconfig */,
+				D00F9CC21A5DC0CA00B4851E /* iOS-Framework.xcconfig */,
+				D00F9CC31A5DC0CA00B4851E /* iOS-StaticLibrary.xcconfig */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		D00F9CC41A5DC0CA00B4851E /* Mac OS X */ = {
+			isa = PBXGroup;
+			children = (
+				D00F9CC51A5DC0CA00B4851E /* Mac-Application.xcconfig */,
+				D00F9CC61A5DC0CA00B4851E /* Mac-Base.xcconfig */,
+				D00F9CC71A5DC0CA00B4851E /* Mac-DynamicLibrary.xcconfig */,
+				D00F9CC81A5DC0CA00B4851E /* Mac-Framework.xcconfig */,
+				D00F9CC91A5DC0CA00B4851E /* Mac-StaticLibrary.xcconfig */,
+			);
+			path = "Mac OS X";
+			sourceTree = "<group>";
+		};
 		D0BBBFB11A5DBF26007913DA = {
 			isa = PBXGroup;
 			children = (
 				D0BBBFBD1A5DBF26007913DA /* OGDL */,
 				D0BBBFCA1A5DBF26007913DA /* OGDLTests */,
+				D00F9CB31A5DC0CA00B4851E /* Configuration */,
 				D0BBBFBC1A5DBF26007913DA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -397,6 +482,7 @@
 				D0BBBFD31A5DBF26007913DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0BBBFD41A5DBF26007913DA /* Build configuration list for PBXNativeTarget "OGDLTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +491,7 @@
 				D0BBBFD61A5DBF26007913DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

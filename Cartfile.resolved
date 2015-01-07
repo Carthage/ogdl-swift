@@ -1,2 +1,5 @@
+github "robrix/Box" "9e0e87fa957eaea0660d0027e6286a9dbbe7d42e"
+github "robrix/Either" "47969a4dfc54e866f8855a9f9dc845139d01c900"
 github "robrix/Madness" "53e28ba08dbf7ba42bdfb53904e9b9a21672db56"
+github "robrix/Prelude" "1ea8d6bd07a6a367aa2ee19d242592a6bc49936b"
 github "jspahrsummers/xcconfigs" "0.7"
