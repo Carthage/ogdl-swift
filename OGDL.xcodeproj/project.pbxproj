@@ -7,12 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D00F9CDB1A5DC12500B4851E /* OGDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00F9CD01A5DC12500B4851E /* OGDL.framework */; };
+		D00F9CE91A5DC1C700B4851E /* OGDLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BBBFCD1A5DBF26007913DA /* OGDLTests.swift */; };
+		D00F9CEA1A5DC1C900B4851E /* OGDL.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BBBFC01A5DBF26007913DA /* OGDL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0BBBFC11A5DBF26007913DA /* OGDL.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BBBFC01A5DBF26007913DA /* OGDL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0BBBFC71A5DBF26007913DA /* OGDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BBBFBB1A5DBF26007913DA /* OGDL.framework */; };
 		D0BBBFCE1A5DBF26007913DA /* OGDLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BBBFCD1A5DBF26007913DA /* OGDLTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D00F9CDC1A5DC12500B4851E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0BBBFB21A5DBF26007913DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D00F9CCF1A5DC12500B4851E;
+			remoteInfo = OGDL;
+		};
 		D0BBBFC81A5DBF26007913DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D0BBBFB21A5DBF26007913DA /* Project object */;
@@ -41,15 +51,32 @@
 		D00F9CC81A5DC0CA00B4851E /* Mac-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Framework.xcconfig"; sourceTree = "<group>"; };
 		D00F9CC91A5DC0CA00B4851E /* Mac-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
 		D00F9CCA1A5DC0CA00B4851E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D00F9CD01A5DC12500B4851E /* OGDL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OGDL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D00F9CDA1A5DC12500B4851E /* OGDL-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OGDL-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BBBFBB1A5DBF26007913DA /* OGDL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OGDL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BBBFBF1A5DBF26007913DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0BBBFC01A5DBF26007913DA /* OGDL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGDL.h; sourceTree = "<group>"; };
-		D0BBBFC61A5DBF26007913DA /* OGDLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OGDLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0BBBFC61A5DBF26007913DA /* OGDL-MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OGDL-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BBBFCC1A5DBF26007913DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0BBBFCD1A5DBF26007913DA /* OGDLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OGDLTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D00F9CCC1A5DC12500B4851E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D00F9CD71A5DC12500B4851E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D00F9CDB1A5DC12500B4851E /* OGDL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0BBBFB71A5DBF26007913DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -148,7 +175,9 @@
 			isa = PBXGroup;
 			children = (
 				D0BBBFBB1A5DBF26007913DA /* OGDL.framework */,
-				D0BBBFC61A5DBF26007913DA /* OGDLTests.xctest */,
+				D0BBBFC61A5DBF26007913DA /* OGDL-MacTests.xctest */,
+				D00F9CD01A5DC12500B4851E /* OGDL.framework */,
+				D00F9CDA1A5DC12500B4851E /* OGDL-iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,6 +219,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		D00F9CCD1A5DC12500B4851E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D00F9CEA1A5DC1C900B4851E /* OGDL.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0BBBFB81A5DBF26007913DA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -201,9 +238,45 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D0BBBFBA1A5DBF26007913DA /* OGDL */ = {
+		D00F9CCF1A5DC12500B4851E /* OGDL-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0BBBFD11A5DBF26007913DA /* Build configuration list for PBXNativeTarget "OGDL" */;
+			buildConfigurationList = D00F9CE71A5DC12500B4851E /* Build configuration list for PBXNativeTarget "OGDL-iOS" */;
+			buildPhases = (
+				D00F9CCB1A5DC12500B4851E /* Sources */,
+				D00F9CCC1A5DC12500B4851E /* Frameworks */,
+				D00F9CCD1A5DC12500B4851E /* Headers */,
+				D00F9CCE1A5DC12500B4851E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OGDL-iOS";
+			productName = OGDL;
+			productReference = D00F9CD01A5DC12500B4851E /* OGDL.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D00F9CD91A5DC12500B4851E /* OGDL-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D00F9CE81A5DC12500B4851E /* Build configuration list for PBXNativeTarget "OGDL-iOSTests" */;
+			buildPhases = (
+				D00F9CD61A5DC12500B4851E /* Sources */,
+				D00F9CD71A5DC12500B4851E /* Frameworks */,
+				D00F9CD81A5DC12500B4851E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D00F9CDD1A5DC12500B4851E /* PBXTargetDependency */,
+			);
+			name = "OGDL-iOSTests";
+			productName = OGDLTests;
+			productReference = D00F9CDA1A5DC12500B4851E /* OGDL-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D0BBBFBA1A5DBF26007913DA /* OGDL-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0BBBFD11A5DBF26007913DA /* Build configuration list for PBXNativeTarget "OGDL-Mac" */;
 			buildPhases = (
 				D0BBBFB61A5DBF26007913DA /* Sources */,
 				D0BBBFB71A5DBF26007913DA /* Frameworks */,
@@ -214,14 +287,14 @@
 			);
 			dependencies = (
 			);
-			name = OGDL;
+			name = "OGDL-Mac";
 			productName = OGDL;
 			productReference = D0BBBFBB1A5DBF26007913DA /* OGDL.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D0BBBFC51A5DBF26007913DA /* OGDLTests */ = {
+		D0BBBFC51A5DBF26007913DA /* OGDL-MacTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0BBBFD41A5DBF26007913DA /* Build configuration list for PBXNativeTarget "OGDLTests" */;
+			buildConfigurationList = D0BBBFD41A5DBF26007913DA /* Build configuration list for PBXNativeTarget "OGDL-MacTests" */;
 			buildPhases = (
 				D0BBBFC21A5DBF26007913DA /* Sources */,
 				D0BBBFC31A5DBF26007913DA /* Frameworks */,
@@ -232,9 +305,9 @@
 			dependencies = (
 				D0BBBFC91A5DBF26007913DA /* PBXTargetDependency */,
 			);
-			name = OGDLTests;
+			name = "OGDL-MacTests";
 			productName = OGDLTests;
-			productReference = D0BBBFC61A5DBF26007913DA /* OGDLTests.xctest */;
+			productReference = D0BBBFC61A5DBF26007913DA /* OGDL-MacTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -246,6 +319,12 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Carthage;
 				TargetAttributes = {
+					D00F9CCF1A5DC12500B4851E = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					D00F9CD91A5DC12500B4851E = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 					D0BBBFBA1A5DBF26007913DA = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -266,13 +345,29 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D0BBBFBA1A5DBF26007913DA /* OGDL */,
-				D0BBBFC51A5DBF26007913DA /* OGDLTests */,
+				D0BBBFBA1A5DBF26007913DA /* OGDL-Mac */,
+				D0BBBFC51A5DBF26007913DA /* OGDL-MacTests */,
+				D00F9CCF1A5DC12500B4851E /* OGDL-iOS */,
+				D00F9CD91A5DC12500B4851E /* OGDL-iOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D00F9CCE1A5DC12500B4851E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D00F9CD81A5DC12500B4851E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0BBBFB91A5DBF26007913DA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,6 +385,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D00F9CCB1A5DC12500B4851E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D00F9CD61A5DC12500B4851E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D00F9CE91A5DC1C700B4851E /* OGDLTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0BBBFB61A5DBF26007913DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -308,53 +418,75 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D00F9CDD1A5DC12500B4851E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D00F9CCF1A5DC12500B4851E /* OGDL-iOS */;
+			targetProxy = D00F9CDC1A5DC12500B4851E /* PBXContainerItemProxy */;
+		};
 		D0BBBFC91A5DBF26007913DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D0BBBFBA1A5DBF26007913DA /* OGDL */;
+			target = D0BBBFBA1A5DBF26007913DA /* OGDL-Mac */;
 			targetProxy = D0BBBFC81A5DBF26007913DA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		D0BBBFCF1A5DBF26007913DA /* Debug */ = {
+		D00F9CE31A5DC12500B4851E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D00F9CC21A5DC0CA00B4851E /* iOS-Framework.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				INFOPLIST_FILE = OGDL/Info.plist;
+			};
+			name = Debug;
+		};
+		D00F9CE41A5DC12500B4851E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D00F9CC21A5DC0CA00B4851E /* iOS-Framework.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				INFOPLIST_FILE = OGDL/Info.plist;
+			};
+			name = Release;
+		};
+		D00F9CE51A5DC12500B4851E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D00F9CC01A5DC0CA00B4851E /* iOS-Application.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = OGDLTests/Info.plist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D00F9CE61A5DC12500B4851E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D00F9CC01A5DC0CA00B4851E /* iOS-Application.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = OGDLTests/Info.plist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D0BBBFCF1A5DBF26007913DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D00F9CB71A5DC0CA00B4851E /* Debug.xcconfig */;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -362,36 +494,12 @@
 		};
 		D0BBBFD01A5DBF26007913DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D00F9CB91A5DC0CA00B4851E /* Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -399,66 +507,48 @@
 		};
 		D0BBBFD21A5DBF26007913DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D00F9CC81A5DC0CA00B4851E /* Mac-Framework.xcconfig */;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = OGDL/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
 		D0BBBFD31A5DBF26007913DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D00F9CC81A5DC0CA00B4851E /* Mac-Framework.xcconfig */;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = OGDL/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
 		D0BBBFD51A5DBF26007913DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D00F9CC51A5DC0CA00B4851E /* Mac-Application.xcconfig */;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = OGDLTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		D0BBBFD61A5DBF26007913DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D00F9CC51A5DC0CA00B4851E /* Mac-Application.xcconfig */;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = OGDLTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -466,6 +556,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D00F9CE71A5DC12500B4851E /* Build configuration list for PBXNativeTarget "OGDL-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D00F9CE31A5DC12500B4851E /* Debug */,
+				D00F9CE41A5DC12500B4851E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D00F9CE81A5DC12500B4851E /* Build configuration list for PBXNativeTarget "OGDL-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D00F9CE51A5DC12500B4851E /* Debug */,
+				D00F9CE61A5DC12500B4851E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D0BBBFB51A5DBF26007913DA /* Build configuration list for PBXProject "OGDL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -475,7 +581,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0BBBFD11A5DBF26007913DA /* Build configuration list for PBXNativeTarget "OGDL" */ = {
+		D0BBBFD11A5DBF26007913DA /* Build configuration list for PBXNativeTarget "OGDL-Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0BBBFD21A5DBF26007913DA /* Debug */,
@@ -484,7 +590,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0BBBFD41A5DBF26007913DA /* Build configuration list for PBXNativeTarget "OGDLTests" */ = {
+		D0BBBFD41A5DBF26007913DA /* Build configuration list for PBXNativeTarget "OGDL-MacTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0BBBFD51A5DBF26007913DA /* Debug */,
