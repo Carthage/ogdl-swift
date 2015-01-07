@@ -23,3 +23,17 @@ internal prefix func % (characterSet: NSCharacterSet) -> Parser<String>.Function
 		return nil
 	}
 }
+
+/// Removes the characters in the given string from the character set.
+internal func - (characterSet: NSCharacterSet, characters: String) -> NSCharacterSet {
+	let mutableSet = characterSet.mutableCopy() as NSMutableCharacterSet
+	mutableSet.removeCharactersInString(characters)
+	return mutableSet
+}
+
+/// Removes characters in the latter set from the former.
+internal func - (characterSet: NSCharacterSet, subtrahend: NSCharacterSet) -> NSCharacterSet {
+	let mutableSet = characterSet.mutableCopy() as NSMutableCharacterSet
+	mutableSet.formIntersectionWithCharacterSet(subtrahend.invertedSet)
+	return mutableSet
+}
