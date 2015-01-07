@@ -53,19 +53,32 @@ private let char_space = NSCharacterSet.whitespaceCharacterSet()
 private let char_break = NSCharacterSet.newlineCharacterSet()
 private let char_end = char_control - NSCharacterSet.whitespaceAndNewlineCharacterSet()
 
-private let wordStart = %(char_word - "#'\"")
-private let wordChar = %(char_word - "'\"")
-private let word = wordStart+ ++ wordChar*
-private let string = (%char_text | %char_space)+
-private let br = %char_break
-private let comment = %"#" ++ ignore(string) ++ br
-private let quoted = (%"'" ++ string ++ %"'") | (%"\"" ++ string ++ %"\"")
-private let requiredSpace = ignore((%char_space)+)
-private let optionalSpace = ignore((%char_space)*)
+private let wordStart: Parser<String>.Function = %(char_word - "#'\"")
+private let wordChars: Parser<String>.Function = (%(char_word - "'\""))* --> { strings in join("", strings) }
+private let word: Parser<String>.Function = wordStart ++ wordChars --> (+)
+private let string: Parser<String>.Function = (%char_text | %char_space)+ --> { strings in join("", strings) }
+private let br: Parser<()>.Function = ignore(%char_break)
+private let comment: Parser<()>.Function = ignore(%"#" ++ string ++ br)
+private let quoted: Parser<String>.Function = (ignore(%"'") ++ string ++ ignore(%"'")) | (ignore(%"\"") ++ string ++ ignore(%"\""))
+private let requiredSpace: Parser<()>.Function = ignore((%char_space)+)
+private let optionalSpace: Parser<()>.Function = ignore((%char_space)*)
+private let separator: Parser<()>.Function = ignore(optionalSpace ++ %"," ++ optionalSpace)
 
-private let element: Parser<String>.Function = word | quoted | group
-private let sequence = element ++ (ignore(optionalSpace ++ %",") ++ optionalSpace ++ element)*
-private let group = %"(" ++ optionalSpace ++ sequence|? ++ optionalSpace ++ %")"
+private let element: Parser<Node>.Function = word | quoted --> { value in Node(value: value) }
+private let elements: Parser<[Node]>.Function = elementList | (elementTree --> { elem in [ elem ] })
+private let group: Parser<[Node]>.Function = ignore(%"(") ++ optionalSpace ++ elements|? ++ optionalSpace ++ ignore(%")") --> { nodes in nodes ?? [] }
 
-private let line = requiredSpace ++ sequence ++ br
-private let graph = line* ++ ignore(char_end|?)
+private let elementList: Parser<[Node]>.Function = (element ++ separator)+
+private let elementTree: Parser<Node>.Function = element ++ (optionalSpace ++ element)|? --> { (parent: Node, child: Node?) -> Node in
+	if let child = child {
+		parent.children.append(child)
+	}
+
+	return parent
+}
+
+private let elements: Parser<[Node]>.Function = elementList | (elementTree --> { elem in [ elem ] })
+private let sequence: Parser<[Node]>.Function = group | elements
+
+private let line: Parser<[Node]>.Function = requiredSpace ++ sequence ++ br
+private let graph: Parser<[Node]>.Function = line* ++ ignore((%char_end)|?)
