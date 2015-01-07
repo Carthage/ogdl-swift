@@ -38,6 +38,14 @@ internal func - (characterSet: NSCharacterSet, subtrahend: NSCharacterSet) -> NS
 	return mutableSet
 }
 
+/// Optional matching operator.
+postfix operator |? {}
+
+/// Matches zero or one occurrence of the given parser.
+internal postfix func |? <T>(parser: Parser<T>.Function) -> Parser<T?>.Function {
+	return (parser * (0..<2)) --> first
+}
+
 private let char_control = NSCharacterSet(range: NSRange(location: 0, length: 32))
 private let char_text = char_control.invertedSet
 private let char_word = char_text - ",()"
@@ -52,4 +60,12 @@ private let string = (%char_text | %char_space)+
 private let br = %char_break
 private let comment = %"#" ++ ignore(string) ++ br
 private let quoted = (%"'" ++ string ++ %"'") | (%"\"" ++ string ++ %"\"")
-private let space = (%char_space)+
+private let requiredSpace = ignore((%char_space)+)
+private let optionalSpace = ignore((%char_space)*)
+
+private let element: Parser<String>.Function = word | quoted | group
+private let sequence = element ++ (ignore(optionalSpace ++ %",") ++ optionalSpace ++ element)*
+private let group = %"(" ++ optionalSpace ++ sequence|? ++ optionalSpace ++ %")"
+
+private let line = requiredSpace ++ sequence ++ br
+private let graph = line* ++ ignore(char_end|?)
