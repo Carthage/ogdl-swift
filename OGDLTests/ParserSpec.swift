@@ -14,6 +14,12 @@ import Quick
 
 class ParserSpec: QuickSpec {
 	override func spec() {
+		it("should parse a single node") {
+			let expectedGraph = [ Node(value: "foobar", children: []) ]
+			let parsedGraph = parse(graph, "foobar")
+			expect(parsedGraph).to(equal(expectedGraph))
+		}
+
 		it("should parse Example 2") {
 			let expectedGraph = [
 				Node(value: "libraries", children: [
