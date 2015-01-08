@@ -44,7 +44,9 @@ class ParserSpec: QuickSpec {
 				expect(sample).notTo(beNil())
 
 				let parsedGraph = parse(graph, sample ?? "")
-				println("graph \(i):\n\(parsedGraph)\n")
+				if let parsedGraph = parsedGraph {
+					println("graph \(i):\n\(parsedGraph)\n")
+				}
 
 				expect(parsedGraph).to(equal(expectedGraph))
 			}
