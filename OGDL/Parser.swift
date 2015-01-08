@@ -46,8 +46,8 @@ internal postfix func |? <T>(parser: Parser<T>.Function) -> Parser<T?>.Function 
 	return (parser * (0..<2)) --> first
 }
 
-private let char_control = NSCharacterSet(range: NSRange(location: 0, length: 32))
-private let char_text = char_control.invertedSet
+private let char_control = NSCharacterSet.controlCharacterSet()
+private let char_text = char_control.invertedSet - NSCharacterSet.whitespaceAndNewlineCharacterSet()
 private let char_word = char_text - ",()"
 private let char_space = NSCharacterSet.whitespaceCharacterSet()
 private let char_break = NSCharacterSet.newlineCharacterSet()
@@ -60,34 +60,24 @@ private let string: Parser<String>.Function = (%char_text | %char_space)+ --> { 
 private let br: Parser<()>.Function = ignore(%char_break)
 private let comment: Parser<()>.Function = ignore(%"#" ++ string ++ br)
 private let quoted: Parser<String>.Function = (ignore(%"'") ++ string ++ ignore(%"'")) | (ignore(%"\"") ++ string ++ ignore(%"\""))
-private let requiredSpace: Parser<()>.Function = ignore((%char_space)+)
-private let optionalSpace: Parser<()>.Function = ignore((%char_space)*)
+private let requiredSpace: Parser<()>.Function = ignore((comment | %char_space)+)
+private let optionalSpace: Parser<()>.Function = ignore((comment | %char_space)*)
 private let separator: Parser<()>.Function = ignore(optionalSpace ++ %"," ++ optionalSpace)
 
 private let value: Parser<String>.Function = word | quoted
 
-private var element: Parser<Node>.Function {
-	return value ++ (requiredSpace ++ requiredChildren)|? --> { value, children in Node(value: value, children: children ?? []) }
+private func buildHierarchy(values: [String]) -> Node? {
+	return values.reverse().reduce(nil) { (child: Node?, value: String) -> Node in
+		if let child = child {
+			return Node(value: value, children: [ child ])
+		} else {
+			return Node(value: value, children: [])
+		}
+	}
 }
 
-private var requiredChildren: Parser<[Node]>.Function {
-	return requiredSiblings | (element --> { elem in [ elem ] })
-}
+private let element: Parser<Node>.Function = value ++ (requiredSpace ++ value)* --> { rootValue, otherValues in buildHierarchy([ rootValue ] + otherValues)! }
+private let siblings: Parser<[Node]>.Function = element ++ (separator ++ element)* --> { head, tail in [ head ] + tail }
+private let group: Parser<[Node]>.Function = ignore(%"(") ++ optionalSpace ++ siblings ++ optionalSpace ++ ignore(%")")
 
-private var siblingList: Parser<[Node]>.Function {
-	return (separator ++ element)*
-}
-
-private var requiredSiblings: Parser<[Node]>.Function {
-	return element ++ siblingList --> { head, tail in [ head ] + tail }
-}
-
-private var optionalSiblings: Parser<[Node]>.Function {
-	return requiredSiblings|? --> { nodes in nodes ?? [] }
-}
-
-private var group: Parser<[Node]>.Function {
-	return ignore(%"(") ++ optionalSpace ++ optionalSiblings ++ optionalSpace ++ ignore(%")")
-}
-
-public let graph: Parser<[Node]>.Function = optionalSiblings
+public let graph: Parser<[Node]>.Function = optionalSpace ++ siblings
