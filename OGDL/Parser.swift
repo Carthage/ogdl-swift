@@ -65,10 +65,15 @@ private let optionalSpace: Parser<()>.Function = ignore((%char_space)*)
 private let separator: Parser<()>.Function = ignore(optionalSpace ++ %"," ++ optionalSpace)
 
 private let value: Parser<String>.Function = word | quoted
-private let element: Parser<Node>.Function = value ++ (siblings | hierarchy) --> { value, children in Node(value: value, children: children) }
+private let element: Parser<Node>.Function = value ++ (requiredSpace ++ requiredChildren)|? --> { value, children in Node(value: value, children: children ?? []) }
 
-private let hierarchy: Parser<[Node]>.Function = (requiredSpace ++ element)*
-private let siblings: Parser<[Node]>.Function = (element ++ separator)*
-private let group: Parser<[Node]>.Function = ignore(%"(") ++ optionalSpace ++ siblings ++ optionalSpace ++ ignore(%")")
+private let requiredChildren: Parser<[Node]>.Function = requiredSiblings | (element --> { elem in [ elem ] })
 
-public let graph: Parser<[Node]>.Function = siblings
+private let siblingList: Parser<[Node]>.Function = (separator ++ element)*
+private let requiredSiblings: Parser<[Node]>.Function = element ++ siblingList --> { head, tail in [ head ] + tail }
+
+private let optionalSiblings: Parser<[Node]>.Function = requiredSiblings|? --> { nodes in nodes ?? [] }
+
+private let group: Parser<[Node]>.Function = ignore(%"(") ++ optionalSpace ++ optionalSiblings ++ optionalSpace ++ ignore(%")")
+
+public let graph: Parser<[Node]>.Function = optionalSiblings
