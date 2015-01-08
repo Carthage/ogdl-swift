@@ -8,12 +8,40 @@
 
 import Foundation
 
-public class Node {
+/// Represents a node in an OGDL graph. Nodes are not required to be unique.
+public class Node: Equatable {
+	/// The value given for this node.
 	public let value: String
+
+	/// Any children of this node.
 	public let children: [Node]
 
 	public init(value: String, children: [Node]) {
 		self.value = value
 		self.children = children
+	}
+}
+
+public func == (lhs: Node, rhs: Node) -> Bool {
+	return lhs.value == rhs.value && lhs.children == rhs.children
+}
+
+extension Node: Hashable {
+	public var hashValue: Int {
+		return value.hashValue ^ children.count.hashValue
+	}
+}
+
+extension Node: Printable {
+	public var description: String {
+		var string = value
+
+		for child in children {
+			child.description.enumerateLines { line, stop in
+				string += "\n\t\(line)"
+			}
+		}
+
+		return string
 	}
 }
