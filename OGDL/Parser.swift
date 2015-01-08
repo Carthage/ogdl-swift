@@ -49,7 +49,7 @@ internal postfix func |? <T>(parser: Parser<T>.Function) -> Parser<T?>.Function 
 private let char_control = NSCharacterSet.controlCharacterSet()
 private let char_text = char_control.invertedSet - NSCharacterSet.whitespaceAndNewlineCharacterSet()
 private let char_word = char_text - ",()"
-private let char_space = NSCharacterSet.whitespaceCharacterSet()
+private let char_space = NSCharacterSet.whitespaceAndNewlineCharacterSet() // FIXME
 private let char_break = NSCharacterSet.newlineCharacterSet()
 private let char_end = char_control - NSCharacterSet.whitespaceAndNewlineCharacterSet()
 
