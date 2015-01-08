@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D00F9CDB1A5DC12500B4851E /* OGDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00F9CD01A5DC12500B4851E /* OGDL.framework */; };
-		D00F9CE91A5DC1C700B4851E /* OGDLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BBBFCD1A5DBF26007913DA /* OGDLTests.swift */; };
 		D00F9CEA1A5DC1C900B4851E /* OGDL.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BBBFC01A5DBF26007913DA /* OGDL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D00F9CEF1A5DC45D00B4851E /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00F9CEB1A5DC45D00B4851E /* Box.framework */; };
 		D00F9CF01A5DC45D00B4851E /* Either.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00F9CEC1A5DC45D00B4851E /* Either.framework */; };
@@ -26,9 +25,12 @@
 		D00F9D031A5DE12100B4851E /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F9D011A5DE12100B4851E /* Parser.swift */; };
 		D00F9D051A5DF4B900B4851E /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F9D041A5DF4B900B4851E /* Graph.swift */; };
 		D00F9D061A5DF4B900B4851E /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F9D041A5DF4B900B4851E /* Graph.swift */; };
+		D095A8381A5E03C3003D7787 /* Samples in Resources */ = {isa = PBXBuildFile; fileRef = D095A8371A5E03C3003D7787 /* Samples */; };
+		D095A8391A5E03C3003D7787 /* Samples in Resources */ = {isa = PBXBuildFile; fileRef = D095A8371A5E03C3003D7787 /* Samples */; };
+		D095A83B1A5E0421003D7787 /* ParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095A83A1A5E0421003D7787 /* ParserSpec.swift */; };
+		D095A83C1A5E0421003D7787 /* ParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095A83A1A5E0421003D7787 /* ParserSpec.swift */; };
 		D0BBBFC11A5DBF26007913DA /* OGDL.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BBBFC01A5DBF26007913DA /* OGDL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0BBBFC71A5DBF26007913DA /* OGDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BBBFBB1A5DBF26007913DA /* OGDL.framework */; };
-		D0BBBFCE1A5DBF26007913DA /* OGDLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BBBFCD1A5DBF26007913DA /* OGDLTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,12 +79,13 @@
 		D00F9CFC1A5DC51300B4851E /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D00F9D011A5DE12100B4851E /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		D00F9D041A5DF4B900B4851E /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		D095A8371A5E03C3003D7787 /* Samples */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Samples; sourceTree = "<group>"; };
+		D095A83A1A5E0421003D7787 /* ParserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserSpec.swift; sourceTree = "<group>"; };
 		D0BBBFBB1A5DBF26007913DA /* OGDL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OGDL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BBBFBF1A5DBF26007913DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0BBBFC01A5DBF26007913DA /* OGDL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGDL.h; sourceTree = "<group>"; };
 		D0BBBFC61A5DBF26007913DA /* OGDL-MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OGDL-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BBBFCC1A5DBF26007913DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D0BBBFCD1A5DBF26007913DA /* OGDLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OGDLTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,7 +247,7 @@
 		D0BBBFCA1A5DBF26007913DA /* OGDLTests */ = {
 			isa = PBXGroup;
 			children = (
-				D0BBBFCD1A5DBF26007913DA /* OGDLTests.swift */,
+				D095A83A1A5E0421003D7787 /* ParserSpec.swift */,
 				D0BBBFCB1A5DBF26007913DA /* Supporting Files */,
 			);
 			path = OGDLTests;
@@ -253,6 +256,7 @@
 		D0BBBFCB1A5DBF26007913DA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D095A8371A5E03C3003D7787 /* Samples */,
 				D00F9CFB1A5DC51300B4851E /* Nimble.framework */,
 				D00F9CFC1A5DC51300B4851E /* Quick.framework */,
 				D0BBBFCC1A5DBF26007913DA /* Info.plist */,
@@ -409,6 +413,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D095A8391A5E03C3003D7787 /* Samples in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +428,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D095A8381A5E03C3003D7787 /* Samples in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D00F9CE91A5DC1C700B4851E /* OGDLTests.swift in Sources */,
+				D095A83C1A5E0421003D7787 /* ParserSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,7 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0BBBFCE1A5DBF26007913DA /* OGDLTests.swift in Sources */,
+				D095A83B1A5E0421003D7787 /* ParserSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

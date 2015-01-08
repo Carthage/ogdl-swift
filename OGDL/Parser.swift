@@ -71,4 +71,4 @@ private let hierarchy: Parser<[Node]>.Function = (requiredSpace ++ element)*
 private let siblings: Parser<[Node]>.Function = (element ++ separator)*
 private let group: Parser<[Node]>.Function = ignore(%"(") ++ optionalSpace ++ siblings ++ optionalSpace ++ ignore(%")")
 
-private let graph: Parser<[Node]>.Function = siblings
+public let graph: Parser<[Node]>.Function = siblings
