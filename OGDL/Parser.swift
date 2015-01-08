@@ -64,21 +64,11 @@ private let requiredSpace: Parser<()>.Function = ignore((%char_space)+)
 private let optionalSpace: Parser<()>.Function = ignore((%char_space)*)
 private let separator: Parser<()>.Function = ignore(optionalSpace ++ %"," ++ optionalSpace)
 
-private let element: Parser<Node>.Function = word | quoted --> { value in Node(value: value) }
-private let elements: Parser<[Node]>.Function = elementList | (elementTree --> { elem in [ elem ] })
-private let group: Parser<[Node]>.Function = ignore(%"(") ++ optionalSpace ++ elements|? ++ optionalSpace ++ ignore(%")") --> { nodes in nodes ?? [] }
+private let value: Parser<String>.Function = word | quoted
+private let element: Parser<Node>.Function = value ++ (siblings | hierarchy) --> { value, children in Node(value: value, children: children) }
 
-private let elementList: Parser<[Node]>.Function = (element ++ separator)+
-private let elementTree: Parser<Node>.Function = element ++ (optionalSpace ++ element)|? --> { (parent: Node, child: Node?) -> Node in
-	if let child = child {
-		parent.children.append(child)
-	}
+private let hierarchy: Parser<[Node]>.Function = (requiredSpace ++ element)*
+private let siblings: Parser<[Node]>.Function = (element ++ separator)*
+private let group: Parser<[Node]>.Function = ignore(%"(") ++ optionalSpace ++ siblings ++ optionalSpace ++ ignore(%")")
 
-	return parent
-}
-
-private let elements: Parser<[Node]>.Function = elementList | (elementTree --> { elem in [ elem ] })
-private let sequence: Parser<[Node]>.Function = group | elements
-
-private let line: Parser<[Node]>.Function = requiredSpace ++ sequence ++ br
-private let graph: Parser<[Node]>.Function = line* ++ ignore((%char_end)|?)
+private let graph: Parser<[Node]>.Function = siblings
