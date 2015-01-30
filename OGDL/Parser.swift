@@ -98,4 +98,6 @@ private let siblings = { _siblings($0) }
 private let _group: Parser<[Node]>.Function = ignore(%"(") ++ optionalSpace ++ siblings ++ optionalSpace ++ ignore(%")")
 private let group = { _group($0) }
 
-public let graph: Parser<[Node]>.Function = optionalSpace ++ siblings ++ optionalSpace
+private let line: Parser<[Node]>.Function = (ignore(comment | br) --> { _ in [] }) | optionalSpace ++ siblings ++ optionalSpace
+
+public let graph: Parser<[Node]>.Function = line+ --> { reduce($0, [], +) }
