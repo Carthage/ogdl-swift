@@ -50,6 +50,18 @@ class ParserSpec: QuickSpec {
 			expect(parsedGraph).to(equal(expectedGraph))
 		}
 
+		it("should parse grouped siblings") {
+			let expectedGraph = [
+				Node(value: "foo", children: [
+					Node(value: "bar", children: []),
+					Node(value: "quux", children: []),
+				])
+			]
+
+			let parsedGraph = parse(graph, "foo (bar, quux)")
+			expect(parsedGraph).to(equal(expectedGraph))
+		}
+
 		it("should parse Example 2") {
 			let expectedGraph = [
 				Node(value: "libraries", children: [
