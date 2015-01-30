@@ -74,6 +74,11 @@ class ParserSpec: QuickSpec {
 			expect(parsedGraph).to(equal(expectedGraph))
 		}
 
+		it("should parse comments") {
+			let parsedGraph = parse(graph, "#foo")
+			expect(parsedGraph).to(equal([]))
+		}
+
 		it("should parse Example 2") {
 			let expectedGraph = [
 				Node(value: "libraries", children: [
