@@ -46,6 +46,16 @@ internal postfix func |? <T>(parser: Parser<T>.Function) -> Parser<T?>.Function 
 	return (parser * (0..<2)) --> first
 }
 
+
+/// flatMap/bind operator.
+infix operator >>- { associativity left precedence 150 }
+
+/// Parses with `left`, passing its parse trees to `right`, and parses with the result of `right`.
+func >>- <T, U> (left: Parser<T>.Function, right: T -> Parser<U>.Function) -> Parser<U>.Function {
+	return { left($0).map { right($0)($1) } ?? nil }
+}
+
+
 private let char_control = NSCharacterSet.controlCharacterSet()
 private let char_text = char_control.invertedSet - NSCharacterSet.whitespaceAndNewlineCharacterSet()
 private let char_word = char_text - ",()"
