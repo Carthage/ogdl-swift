@@ -83,6 +83,9 @@ private func buildHierarchy(values: [String]) -> Node? {
 	}
 }
 
+
+// MARK: Generic combinators
+
 private func lazy<T>(parser: () -> Parser<T>.Function) -> Parser<T>.Function {
 	return { parser()($0) }
 }
