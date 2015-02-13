@@ -112,10 +112,15 @@ private let group = lazy { ignore(%"(") ++ optionalSpace ++ siblings ++ optional
 // stubs
 private let block: Int -> Parser<()>.Function = { n in const(nil) }
 
+/// Parses a single descendent element.
+///
+/// This is an element which may be an in-line descendent, and which may further have in-line descendents of its own.
+private let descendent = (word | quoted) --> { Node(value: $0, children: []) }
+
 /// Parses a sequence of hierarchically descending elements, e.g.:
 ///
 ///		x y z # => Node(x, [Node(y, Node(z))])
-private let descendents: Parser<Node>.Function = fix { descendents in element >>- { node in
+private let descendents: Parser<Node>.Function = fix { descendents in descendent >>- { node in
 	(optionalSpace ++ descendents) --> { node.byAppendingChild($1) }
 }}
 
