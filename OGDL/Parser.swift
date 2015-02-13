@@ -124,10 +124,15 @@ private let descendents: Parser<Node>.Function = fix { descendents in descendent
 	(optionalSpace ++ descendents) --> { node.byAppendingChild($1) }
 }}
 
+/// Parses a sequence of adjacent sibling elements, e.g.:
+///
+///		x, y z, w # => [ Node(x), Node(y, Node(z)), Node(w) ]
+private let adjacent: Parser<[Node]>.Function = interleave(optionalSpace ++ %"," ++ optionalSpace, descendents)
+
 private let line: Int -> Parser<[Node]>.Function = { n in
 	// fixme: block parsing: ignore(%char_space+ ++ block(n))|?) ++
 	// fixme: skip comments and blank lines
-	indentation(n) ++ (descendents --> { [$0] }) ++ br
+	indentation(n) ++ adjacent ++ br
 }
 
 public let graph: Parser<[Node]>.Function = line(0)+ --> { reduce($0, [], +) }
