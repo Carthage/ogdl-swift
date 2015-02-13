@@ -8,6 +8,7 @@
 
 import Foundation
 import Madness
+import Prelude
 
 /// Returns a parser which parses one character from the given set.
 internal prefix func % (characterSet: NSCharacterSet) -> Parser<String>.Function {
@@ -94,6 +95,14 @@ private let siblings = lazy { element ++ (separator ++ element)* --> { head, tai
 
 private let group = lazy { ignore(%"(") ++ optionalSpace ++ siblings ++ optionalSpace ++ ignore(%")") }
 
-private let line: Parser<[Node]>.Function = (ignore(comment | br) --> { _ in [] }) | optionalSpace ++ siblings ++ optionalSpace
+// stubs
+private let block: Int -> Parser<()>.Function = { n in const(nil) }
+private let sequence: Parser<[Node]>.Function = const(nil)
+private let line: Int -> Parser<[Node]>.Function = { n in
+	// fixme: block parsing: ignore(%char_space+ ++ block(n))|?) ++
+	// fixme: skip comments and blank lines
+	indentation(n) ++ sequence ++ br
+}
 
-public let graph: Parser<[Node]>.Function = line+ --> { reduce($0, [], +) }
+public let graph: Parser<[Node]>.Function = line(0)+ --> { reduce($0, [], +) }
+
