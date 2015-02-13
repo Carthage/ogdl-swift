@@ -123,7 +123,7 @@ private let descendents: Parser<Node>.Function = fix { descendents in descendent
 /// Parses a sequence of adjacent sibling elements, e.g.:
 ///
 ///		x, y z, w # => [ Node(x), Node(y, Node(z)), Node(w) ]
-private let adjacent: Parser<[Node]>.Function = interleave(optionalSpace ++ %"," ++ optionalSpace, descendents)
+private let adjacent: Parser<[Node]>.Function = interleave(separator, descendents)
 
 /// Parses a parenthesized sequence of sibling elements, e.g.:
 /// 
