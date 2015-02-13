@@ -76,6 +76,10 @@ private func buildHierarchy(values: [String]) -> Node? {
 	}
 }
 
+private func lazy<T>(parser: () -> Parser<T>.Function) -> Parser<T>.Function {
+	return { parser()($0) }
+}
+
 private let _children: Parser<[Node]>.Function = group | (element --> { elem in [ elem ] })
 private let children = { _children($0) }
 
