@@ -111,11 +111,16 @@ private let group = lazy { ignore(%"(") ++ optionalSpace ++ siblings ++ optional
 
 // stubs
 private let block: Int -> Parser<()>.Function = { n in const(nil) }
-private let sequence: Parser<[Node]>.Function = const(nil)
+
+/// Parses a sequence of hierarchically descending elements.
+private let descendents: Parser<Node>.Function = fix { descendents in element >>- { node in
+	(optionalSpace ++ descendents) --> { node.byAppendingChild($1) }
+}}
+
 private let line: Int -> Parser<[Node]>.Function = { n in
 	// fixme: block parsing: ignore(%char_space+ ++ block(n))|?) ++
 	// fixme: skip comments and blank lines
-	indentation(n) ++ sequence ++ br
+	indentation(n) ++ (descendents --> { [$0] }) ++ br
 }
 
 public let graph: Parser<[Node]>.Function = line(0)+ --> { reduce($0, [], +) }
