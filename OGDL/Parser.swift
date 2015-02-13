@@ -66,6 +66,12 @@ private let separator: Parser<()>.Function = ignore(optionalSpace ++ %"," ++ opt
 
 private let value: Parser<String>.Function = word | quoted
 
+/// A function taking an Int and returning a parser which parses exactly that many
+/// indentation characters.
+private let indentation: Int -> Parser<()>.Function = { n in
+	ignore(%char_space * n)
+}
+
 private func buildHierarchy(values: [String]) -> Node? {
 	return values.reverse().reduce(nil) { (child: Node?, value: String) -> Node in
 		if let child = child {
