@@ -105,11 +105,7 @@ private let children: Parser<[Node]>.Function = lazy { group | (element --> { el
 
 private let element = lazy { value ++ (optionalSpace ++ children)|? --> { value, children in Node(value: value, children: children ?? []) } }
 
-private let siblings = lazy { element ++ (separator ++ element)* --> { head, tail in [ head ] + tail } }
-
-private let group = lazy { ignore(%"(") ++ optionalSpace ++ siblings ++ optionalSpace ++ ignore(%")") }
-
-// stubs
+// stubbed
 private let block: Int -> Parser<()>.Function = { n in const(nil) }
 
 /// Parses a single descendent element.
@@ -128,6 +124,11 @@ private let descendents: Parser<Node>.Function = fix { descendents in descendent
 ///
 ///		x, y z, w # => [ Node(x), Node(y, Node(z)), Node(w) ]
 private let adjacent: Parser<[Node]>.Function = interleave(optionalSpace ++ %"," ++ optionalSpace, descendents)
+
+/// Parses a parenthesized sequence of sibling elements, e.g.:
+/// 
+///		(x, y z, w) # => [ Node(x), Node(y, Node(z)), Node(w) ]
+private let group = lazy { ignore(%"(") ++ optionalSpace ++ adjacent ++ optionalSpace ++ ignore(%")") }
 
 private let line: Int -> Parser<[Node]>.Function = { n in
 	// fixme: block parsing: ignore(%char_space+ ++ block(n))|?) ++
