@@ -86,8 +86,7 @@ private let children = { _children($0) }
 private let _element: Parser<Node>.Function = value ++ (optionalSpace ++ children)|? --> { value, children in Node(value: value, children: children ?? []) }
 private let element = { _element($0) }
 
-private let _siblings: Parser<[Node]>.Function = element ++ (separator ++ element)* --> { head, tail in [ head ] + tail }
-private let siblings = { _siblings($0) }
+private let siblings = lazy { element ++ (separator ++ element)* --> { head, tail in [ head ] + tail } }
 
 private let group = lazy { ignore(%"(") ++ optionalSpace ++ siblings ++ optionalSpace ++ ignore(%")") }
 
