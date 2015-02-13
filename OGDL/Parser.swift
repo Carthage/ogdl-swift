@@ -117,7 +117,7 @@ private let descendent = (word | quoted) --> { Node(value: $0, children: []) }
 ///
 ///		x y z # => Node(x, [Node(y, Node(z))])
 private let descendents: Parser<Node>.Function = fix { descendents in descendent >>- { node in
-	(optionalSpace ++ descendents) --> { node.byAppendingChild($1) }
+	(optionalSpace ++ descendents) --> { node.byAppendingChildren([ $1 ]) }
 }}
 
 /// Parses a sequence of adjacent sibling elements, e.g.:
