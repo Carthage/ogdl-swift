@@ -83,8 +83,7 @@ private func lazy<T>(parser: () -> Parser<T>.Function) -> Parser<T>.Function {
 private let _children: Parser<[Node]>.Function = group | (element --> { elem in [ elem ] })
 private let children = { _children($0) }
 
-private let _element: Parser<Node>.Function = value ++ (optionalSpace ++ children)|? --> { value, children in Node(value: value, children: children ?? []) }
-private let element = { _element($0) }
+private let element = lazy { value ++ (optionalSpace ++ children)|? --> { value, children in Node(value: value, children: children ?? []) } }
 
 private let siblings = lazy { element ++ (separator ++ element)* --> { head, tail in [ head ] + tail } }
 
