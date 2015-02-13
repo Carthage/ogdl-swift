@@ -91,6 +91,13 @@ private func lazy<T>(parser: () -> Parser<T>.Function) -> Parser<T>.Function {
 	return { parser()($0) }
 }
 
+/// Returns a parser which produces an array of parse trees produced by `parser` interleaved with ignored parses of `separator`.
+///
+/// This is convenient for e.g. comma-separated lists.
+private func interleave<T, U>(separator: Parser<U>.Function, parser: Parser<T>.Function) -> Parser<[T]>.Function {
+	return (parser ++ (ignore(separator) ++ parser)*) --> { [$0] + $1 }
+}
+
 
 // MARK: OGDL
 
