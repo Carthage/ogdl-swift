@@ -90,6 +90,9 @@ private func lazy<T>(parser: () -> Parser<T>.Function) -> Parser<T>.Function {
 	return { parser()($0) }
 }
 
+
+// MARK: OGDL
+
 private let children: Parser<[Node]>.Function = lazy { group | (element --> { elem in [ elem ] }) }
 
 private let element = lazy { value ++ (optionalSpace ++ children)|? --> { value, children in Node(value: value, children: children ?? []) } }
