@@ -89,8 +89,7 @@ private let element = { _element($0) }
 private let _siblings: Parser<[Node]>.Function = element ++ (separator ++ element)* --> { head, tail in [ head ] + tail }
 private let siblings = { _siblings($0) }
 
-private let _group: Parser<[Node]>.Function = ignore(%"(") ++ optionalSpace ++ siblings ++ optionalSpace ++ ignore(%")")
-private let group = { _group($0) }
+private let group = lazy { ignore(%"(") ++ optionalSpace ++ siblings ++ optionalSpace ++ ignore(%")") }
 
 private let line: Parser<[Node]>.Function = (ignore(comment | br) --> { _ in [] }) | optionalSpace ++ siblings ++ optionalSpace
 
