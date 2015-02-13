@@ -112,7 +112,9 @@ private let group = lazy { ignore(%"(") ++ optionalSpace ++ siblings ++ optional
 // stubs
 private let block: Int -> Parser<()>.Function = { n in const(nil) }
 
-/// Parses a sequence of hierarchically descending elements.
+/// Parses a sequence of hierarchically descending elements, e.g.:
+///
+///		x y z # => Node(x, [Node(y, Node(z))])
 private let descendents: Parser<Node>.Function = fix { descendents in element >>- { node in
 	(optionalSpace ++ descendents) --> { node.byAppendingChild($1) }
 }}
