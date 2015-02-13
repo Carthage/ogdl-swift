@@ -16,6 +16,10 @@ public class Node: Equatable {
 	/// Any children of this node.
 	public let children: [Node]
 
+	public func byAppendingChild(child: Node) -> Node {
+		return Node(value: value, children: children + [ child ])
+	}
+
 	public init(value: String, children: [Node]) {
 		self.value = value
 		self.children = children
