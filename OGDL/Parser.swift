@@ -100,6 +100,15 @@ private func interleave<T, U>(separator: Parser<U>.Function, parser: Parser<T>.F
 	return (parser ++ (ignore(separator) ++ parser)*) --> { [$0] + $1 }
 }
 
+private func foldr<S: SequenceType, Result>(sequence: S, initial: Result, combine: (S.Generator.Element, Result) -> Result) -> Result {
+	var generator = sequence.generate()
+	return foldr(&generator, initial, combine)
+}
+
+private func foldr<G: GeneratorType, Result>(inout generator: G, initial: Result, combine: (G.Element, Result) -> Result) -> Result {
+	return generator.next().map { combine($0, foldr(&generator, initial, combine)) } ?? initial
+}
+
 
 let eof: Parser<()>.Function = { $0 == "" ? ((), "") : nil }
 
