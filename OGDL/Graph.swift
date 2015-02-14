@@ -20,7 +20,7 @@ public class Node: Equatable {
 		return Node(value: value, children: self.children + children)
 	}
 
-	public init(value: String, children: [Node]) {
+	public init(value: String, children: [Node] = []) {
 		self.value = value
 		self.children = children
 	}
