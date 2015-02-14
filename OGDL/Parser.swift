@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Either
 import Madness
 import Prelude
 
@@ -107,6 +108,14 @@ private func foldr<S: SequenceType, Result>(sequence: S, initial: Result, combin
 
 private func foldr<G: GeneratorType, Result>(inout generator: G, initial: Result, combine: (G.Element, Result) -> Result) -> Result {
 	return generator.next().map { combine($0, foldr(&generator, initial, combine)) } ?? initial
+}
+
+private func | <T, U> (left: Parser<T>.Function, right: String -> U) -> Parser<Either<T, U>>.Function {
+	return left | { (right($0), $0) }
+}
+
+private func | <T> (left: Parser<T>.Function, right: String -> T) -> Parser<T>.Function {
+	return left | { (right($0), $0) }
 }
 
 
