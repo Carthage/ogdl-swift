@@ -14,6 +14,10 @@ import Quick
 
 class ParserSpec: QuickSpec {
 	override func spec() {
+		it("should parse the empty string") {
+			expect(parse(graph, "")).to(equal([]))
+		}
+
 		it("should parse a single node") {
 			let expectedGraph = [ Node(value: "foobar") ]
 			let parsedGraph = parse(graph, "foobar")
