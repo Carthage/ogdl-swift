@@ -67,7 +67,7 @@ class ParserSpec: QuickSpec {
 				Node(value: "foo", children: [
 					Node(value: "bar.o", children: [ Node(value: "1.2", children: []) ]),
 					Node(value: "quux.o", children: [ Node(value: "2.1", children: []) ]),
-					])
+				])
 			]
 
 			let parsedGraph = parse(graph, "foo ( bar.o 1.2, quux.o 2.1 )")
