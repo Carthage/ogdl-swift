@@ -24,6 +24,12 @@ class ParserSpec: QuickSpec {
 			expect(parsedGraph).to(equal(expectedGraph))
 		}
 
+		it("should parse a single node ending with a newline") {
+			let expectedGraph = [ Node(value: "foobar") ]
+			let parsedGraph = parse(graph, "foobar\n")
+			expect(parsedGraph).to(equal(expectedGraph))
+		}
+
 		it("should parse a hierarchy") {
 			let expectedGraph = [
 				Node(value: "foo", children: [
