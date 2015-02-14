@@ -143,10 +143,15 @@ public let descendents: Parser<Node>.Function = interleave(requiredSpace, descen
 	foldr(dropLast($0), last($0)!) { $0.byAppendingChildren([ $1 ]) }
 }
 
+/// Parses a chain of descendents, optionally ending in a group.
+///
+///		x y (u, v) # => Node(x, [ Node(y, [ Node(u), Node(v) ]) ])
+private let descendentChain: Parser<Node>.Function = (descendents ++ ((optionalSpace ++ group) | const([]))) --> uncurry(Node.byAppendingChildren)
+
 /// Parses a sequence of adjacent sibling elements, e.g.:
 ///
 ///		x, y z, w (u, v) # => [ Node(x), Node(y, Node(z)), Node(w, [ Node(u), Node(v) ]) ]
-public let adjacent: Parser<[Node]>.Function = lazy { interleave(separator, descendents >>- { node in (optionalSpace ++ group) --> { node.byAppendingChildren($1) } })|? --> { $0 ?? [] } }
+public let adjacent: Parser<[Node]>.Function = lazy { interleave(separator, descendentChain) }
 
 /// Parses a parenthesized sequence of sibling elements, e.g.:
 /// 
