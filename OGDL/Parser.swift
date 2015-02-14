@@ -128,7 +128,7 @@ private let descendents: Parser<Node>.Function = fix { descendents in descendent
 /// Parses a sequence of adjacent sibling elements, e.g.:
 ///
 ///		x, y z, w (u, v) # => [ Node(x), Node(y, Node(z)), Node(w, [ Node(u), Node(v) ]) ]
-private let adjacent: Parser<[Node]>.Function = lazy { interleave(separator, descendents >>- { node in (optionalSpace ++ group) --> { node.byAppendingChildren($1) } }) }
+private let adjacent: Parser<[Node]>.Function = lazy { interleave(separator, descendents >>- { node in (optionalSpace ++ group) --> { node.byAppendingChildren($1) } })|? --> { $0 ?? [] } }
 
 /// Parses a parenthesized sequence of sibling elements, e.g.:
 /// 
