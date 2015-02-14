@@ -162,10 +162,20 @@ public let adjacent: Parser<[Node]>.Function = lazy { interleave(separator, desc
 ///		(x, y z, w) # => [ Node(x), Node(y, Node(z)), Node(w) ]
 private let group = lazy { ignore(%"(") ++ optionalSpace ++ adjacent ++ optionalSpace ++ ignore(%")") }
 
-private let line: Int -> Parser<[Node]>.Function = { n in
-	// fixme: block parsing: ignore(%char_space+ ++ block(n))|?) ++
-	ignore(indentation(n)) ++ adjacent ++ optionalSpace ++ (comment | br)+
+private let subgraph: Int -> Parser<[Node]>.Function = { n in
+	(descendents ++ lines(n + 1) --> { [ $0.byAppendingChildren($1) ] }) | adjacent
 }
 
-public let graph: Parser<[Node]>.Function = ignore(comment | br)* ++ (line(0)* --> { reduce($0, [], +) }) | adjacent
+private let line: Int -> Parser<[Node]>.Function = fix { line in
+	{ n in
+		// fixme: block parsing: ignore(%char_space+ ++ block(n))|?) ++
+		indentation(n) >>- { n in
+			subgraph(n) ++ optionalSpace ++ (comment | br)+
+		}
+	}
+}
+
+private let lines: Int -> Parser<[Node]>.Function = { line($0)* --> (flip(flatMap) <| id) }
+
+public let graph: Parser<[Node]>.Function = ignore(comment | br)* ++ lines(0) | adjacent
 
