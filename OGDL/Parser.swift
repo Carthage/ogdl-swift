@@ -132,7 +132,7 @@ private let group = lazy { ignore(%"(") ++ optionalSpace ++ adjacent ++ optional
 
 private let line: Int -> Parser<[Node]>.Function = { n in
 	// fixme: block parsing: ignore(%char_space+ ++ block(n))|?) ++
-	ignore(indentation(n)) ++ adjacent ++ br
+	ignore(indentation(n)) ++ adjacent ++ (comment | br)
 }
 
 public let graph: Parser<[Node]>.Function = (comment | br)* ++ line(0)* --> { reduce($0, [], +) }
