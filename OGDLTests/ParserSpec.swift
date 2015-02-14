@@ -15,7 +15,7 @@ import Quick
 class ParserSpec: QuickSpec {
 	override func spec() {
 		it("should parse a single node") {
-			let expectedGraph = [ Node(value: "foobar", children: []) ]
+			let expectedGraph = [ Node(value: "foobar") ]
 			let parsedGraph = parse(graph, "foobar")
 			expect(parsedGraph).to(equal(expectedGraph))
 		}
@@ -25,7 +25,7 @@ class ParserSpec: QuickSpec {
 				Node(value: "foo", children: [
 					Node(value: "bar", children: [
 						Node(value: "fuzz", children: [
-							Node(value: "buzz", children: [])
+							Node(value: "buzz")
 						])
 					])
 				])
@@ -38,11 +38,11 @@ class ParserSpec: QuickSpec {
 		it("should parse siblings") {
 			let expectedGraph = [
 				Node(value: "foo", children: [
-					Node(value: "bar", children: [])
+					Node(value: "bar")
 				]),
 
 				Node(value: "fuzz", children: [
-					Node(value: "buzz", children: [])
+					Node(value: "buzz")
 				])
 			]
 
@@ -53,8 +53,8 @@ class ParserSpec: QuickSpec {
 		it("should parse grouped siblings") {
 			let expectedGraph = [
 				Node(value: "foo", children: [
-					Node(value: "bar", children: []),
-					Node(value: "quux", children: []),
+					Node(value: "bar"),
+					Node(value: "quux"),
 				])
 			]
 
@@ -65,8 +65,8 @@ class ParserSpec: QuickSpec {
 		it("should parse grouped siblings with children") {
 			let expectedGraph = [
 				Node(value: "foo", children: [
-					Node(value: "bar.o", children: [ Node(value: "1.2", children: []) ]),
-					Node(value: "quux.o", children: [ Node(value: "2.1", children: []) ]),
+					Node(value: "bar.o", children: [ Node(value: "1.2") ]),
+					Node(value: "quux.o", children: [ Node(value: "2.1") ]),
 				])
 			]
 
@@ -84,13 +84,13 @@ class ParserSpec: QuickSpec {
 				Node(value: "libraries", children: [
 					Node(value: "foo.so", children: [
 						Node(value: "version", children: [
-							Node(value: "1.2", children: [])
+							Node(value: "1.2")
 						])
 					]),
 
 					Node(value: "bar.so", children: [
 						Node(value: "version", children: [
-							Node(value: "2.3", children: [])
+							Node(value: "2.3")
 						])
 					]),
 				])
