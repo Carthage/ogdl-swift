@@ -59,7 +59,7 @@ private let wordChars: Parser<String>.Function = (%(char_word - "'\""))* --> { s
 private let word: Parser<String>.Function = wordStart ++ wordChars --> (+)
 private let string: Parser<String>.Function = (%char_text | %char_space)+ --> { strings in join("", strings) }
 private let br: Parser<()>.Function = ignore(%char_break)
-private let comment: Parser<()>.Function = ignore(%"#" ++ string ++ br)
+private let comment: Parser<()>.Function = ignore(%"#" ++ string ++ (br | eof))
 private let quoted: Parser<String>.Function = (ignore(%"'") ++ string ++ ignore(%"'")) | (ignore(%"\"") ++ string ++ ignore(%"\""))
 private let requiredSpace: Parser<()>.Function = ignore((comment | %char_space)+)
 private let optionalSpace: Parser<()>.Function = ignore((comment | %char_space)*)
@@ -99,6 +99,9 @@ private func lazy<T>(parser: () -> Parser<T>.Function) -> Parser<T>.Function {
 private func interleave<T, U>(separator: Parser<U>.Function, parser: Parser<T>.Function) -> Parser<[T]>.Function {
 	return (parser ++ (ignore(separator) ++ parser)*) --> { [$0] + $1 }
 }
+
+
+let eof: Parser<()>.Function = { $0 == "" ? ((), "") : nil }
 
 
 // MARK: OGDL
