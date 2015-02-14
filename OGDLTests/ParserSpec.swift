@@ -26,6 +26,14 @@ class ParserSpec: QuickSpec {
 			expect(parse(graph, "\n\n\n")).to(equal([]))
 		}
 
+		it("should parse a single node with descendents") {
+			expect(parse(descendents, "foobar")).to(equal(Node(value: "foobar")))
+		}
+
+		it("should parse a single node with adjacent") {
+			expect(parse(adjacent, "foobar")).to(equal([ Node(value: "foobar") ]))
+		}
+
 		it("should parse a single node") {
 			let expectedGraph = [ Node(value: "foobar") ]
 			let parsedGraph = parse(graph, "foobar")
