@@ -121,9 +121,9 @@ private let descendent = (word | quoted) --> { Node(value: $0) }
 /// Parses a sequence of hierarchically descending elements, e.g.:
 ///
 ///		x y z # => Node(x, [Node(y, Node(z))])
-private let descendents: Parser<Node>.Function = fix { descendents in descendent >>- { node in
-	(optionalSpace ++ descendents) --> { node.byAppendingChildren([ $1 ]) }
-}}
+public let descendents: Parser<Node>.Function = interleave(requiredSpace, descendent) --> {
+	foldr(dropLast($0), last($0)!) { $0.byAppendingChildren([ $1 ]) }
+}
 
 /// Parses a sequence of adjacent sibling elements, e.g.:
 ///
