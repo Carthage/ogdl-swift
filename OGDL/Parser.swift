@@ -118,6 +118,10 @@ private func | <T> (left: Parser<T>.Function, right: String -> T) -> Parser<T>.F
 	return left | { (right($0), $0) }
 }
 
+private func flatMap<T, U>(x: [T], f: T -> [U]) -> [U] {
+	return reduce(lazy(x).map(f), [], +)
+}
+
 
 let eof: Parser<()>.Function = { $0 == "" ? ((), "") : nil }
 
