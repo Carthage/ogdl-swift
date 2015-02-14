@@ -86,6 +86,8 @@ private func buildHierarchy(values: [String]) -> Node? {
 
 // MARK: Generic combinators
 
+// fixme: move these into Madness.
+
 /// Delays the evaluation of a parser so that it can be used in a recursive grammar without deadlocking Swift at runtime.
 private func lazy<T>(parser: () -> Parser<T>.Function) -> Parser<T>.Function {
 	return { parser()($0) }
