@@ -135,5 +135,5 @@ private let line: Int -> Parser<[Node]>.Function = { n in
 	ignore(indentation(n)) ++ adjacent ++ br
 }
 
-public let graph: Parser<[Node]>.Function = line(0)+ --> { reduce($0, [], +) }
+public let graph: Parser<[Node]>.Function = (comment | br)* ++ line(0)* --> { reduce($0, [], +) }
 
