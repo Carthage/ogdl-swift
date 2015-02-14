@@ -18,6 +18,14 @@ class ParserSpec: QuickSpec {
 			expect(parse(graph, "")).to(equal([]))
 		}
 
+		it("should parse a line break") {
+			expect(parse(graph, "\n")).to(equal([]))
+		}
+
+		it("should parse a series of line breaks") {
+			expect(parse(graph, "\n\n\n")).to(equal([]))
+		}
+
 		it("should parse a single node") {
 			let expectedGraph = [ Node(value: "foobar") ]
 			let parsedGraph = parse(graph, "foobar")
