@@ -116,7 +116,7 @@ private let block: Int -> Parser<()>.Function = { n in const(nil) }
 /// Parses a single descendent element.
 ///
 /// This is an element which may be an in-line descendent, and which may further have in-line descendents of its own.
-private let descendent = (word | quoted) --> { Node(value: $0, children: []) }
+private let descendent = (word | quoted) --> { Node(value: $0) }
 
 /// Parses a sequence of hierarchically descending elements, e.g.:
 ///
