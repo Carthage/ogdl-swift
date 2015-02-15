@@ -38,12 +38,16 @@ extension Node: Hashable {
 
 extension Node: Printable {
 	public var description: String {
-		var string = value
+		var string = ""
+		if value.rangeOfCharacterFromSet(NSCharacterSet.alphanumericCharacterSet().invertedSet) == nil {
+			string = value
+		} else {
+			string = "\"\(value)\""
+		}
 
-		for child in children {
-			child.description.enumerateLines { line, stop in
-				string += "\n\t\(line)"
-			}
+		if !children.isEmpty {
+			let childDescriptions = map(children) { $0.description }
+			string += " (" + join(", ", childDescriptions) + ")"
 		}
 
 		return string
