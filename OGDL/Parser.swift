@@ -158,7 +158,7 @@ private let descendentChain: Parser<Node>.Function = (descendents ++ ((optionalS
 public let adjacent: Parser<[Node]>.Function = lazy { interleave(separator, descendentChain) }
 
 /// Parses a parenthesized sequence of sibling elements, e.g.:
-/// 
+///
 ///		(x, y z, w) # => [ Node(x), Node(y, Node(z)), Node(w) ]
 private let group = lazy { ignore(%"(") ++ optionalSpace ++ adjacent ++ optionalSpace ++ ignore(%")") }
 
@@ -170,12 +170,14 @@ private let line: Int -> Parser<[Node]>.Function = fix { line in
 	{ n in
 		// fixme: block parsing: ignore(%char_space+ ++ block(n))|?) ++
 		indentation(n) >>- { n in
-			subgraph(n) ++ optionalSpace ++ (comment | br)+
+			subgraph(n) ++ optionalSpace
 		}
 	}
 }
 
-private let lines: Int -> Parser<[Node]>.Function = { line($0)* --> (flip(flatMap) <| id) }
+private let followingLine: Int -> Parser<[Node]>.Function = { n in (ignore(comment | br)+ ++ line(n)) }
+private let lines: Int -> Parser<[Node]>.Function = { n in
+	(line(n)|? ++ followingLine(n)*) --> { ($0 ?? []) + flatMap($1, id) }
+}
 
-public let graph: Parser<[Node]>.Function = ignore(comment | br)* ++ lines(0) | adjacent
-
+public let graph: Parser<[Node]>.Function = ignore(comment | br)* ++ (lines(0) | adjacent) ++ ignore(comment | br)*
