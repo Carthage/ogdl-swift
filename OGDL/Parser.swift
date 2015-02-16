@@ -53,6 +53,8 @@ private let char_text = char_control.invertedSet - NSCharacterSet.whitespaceAndN
 private let char_word = char_text - ",()"
 private let char_space = NSCharacterSet.whitespaceCharacterSet()
 private let char_break = NSCharacterSet.newlineCharacterSet()
+
+// TODO: Use this somewhere.
 private let char_end = char_control - NSCharacterSet.whitespaceAndNewlineCharacterSet()
 
 private let wordStart: Parser<String>.Function = %(char_word - "#'\"")
