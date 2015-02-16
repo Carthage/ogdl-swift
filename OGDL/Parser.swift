@@ -168,4 +168,9 @@ private let lines: Int -> Parser<[Node]>.Function = { n in
 	(line(n)|? ++ followingLine(n)*) --> { ($0 ?? []) + flatMap($1, id) }
 }
 
+/// Parses a textual OGDL graph into a list of nodes (and their descendants).
+///
+/// Example:
+///
+///   let nodes = parse(graph, "foo (bar, buzz baz)")
 public let graph: Parser<[Node]>.Function = ignore(comment | br)* ++ (lines(0) | adjacent) ++ ignore(comment | br)*
