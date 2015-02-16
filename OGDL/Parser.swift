@@ -74,17 +74,6 @@ func indentation(n: Int) -> Parser<Int>.Function {
 	return (%char_space * (n..<Int.max)) --> { $0.count }
 }
 
-private func buildHierarchy(values: [String]) -> Node? {
-	return values.reverse().reduce(nil) { (child: Node?, value: String) -> Node in
-		if let child = child {
-			return Node(value: value, children: [ child ])
-		} else {
-			return Node(value: value, children: [])
-		}
-	}
-}
-
-
 // MARK: Generic combinators
 
 // fixme: move these into Madness.
