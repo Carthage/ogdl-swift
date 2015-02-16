@@ -119,7 +119,7 @@ private let children: Parser<[Node]>.Function = lazy { group | (element --> { el
 
 private let element = lazy { value ++ (optionalSpace ++ children)|? --> { value, children in Node(value: value, children: children ?? []) } }
 
-// stubbed
+// TODO: See Carthage/ogdl-swift#3.
 private let block: Int -> Parser<()>.Function = { n in const(nil) }
 
 /// Parses a single descendent element.
@@ -155,7 +155,8 @@ private let subgraph: Int -> Parser<[Node]>.Function = { n in
 
 private let line: Int -> Parser<[Node]>.Function = fix { line in
 	{ n in
-		// fixme: block parsing: ignore(%char_space+ ++ block(n))|?) ++
+		// TODO: block parsing: ignore(%char_space+ ++ block(n))|?) ++
+		// See Carthage/ogdl-swift#3.
 		indentation(n) >>- { n in
 			subgraph(n) ++ optionalSpace
 		}
