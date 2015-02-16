@@ -16,13 +16,14 @@ public class Node: Equatable {
 	/// Any children of this node.
 	public let children: [Node]
 
-	public func byAppendingChildren(children: [Node]) -> Node {
-		return Node(value: value, children: self.children + children)
-	}
-
 	public init(value: String, children: [Node] = []) {
 		self.value = value
 		self.children = children
+	}
+
+	/// Creates a new node by appending the given children to that of the receiver.
+	public func nodeByAppendingChildren(children: [Node]) -> Node {
+		return Node(value: value, children: self.children + children)
 	}
 }
 

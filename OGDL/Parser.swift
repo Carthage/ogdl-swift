@@ -131,13 +131,13 @@ private let descendent = (word | quoted) --> { Node(value: $0) }
 ///
 ///		x y z # => Node(x, [Node(y, Node(z))])
 public let descendents: Parser<Node>.Function = interleave(requiredSpace, descendent) --> {
-	foldr(dropLast($0), last($0)!) { $0.byAppendingChildren([ $1 ]) }
+	foldr(dropLast($0), last($0)!) { $0.nodeByAppendingChildren([ $1 ]) }
 }
 
 /// Parses a chain of descendents, optionally ending in a group.
 ///
 ///		x y (u, v) # => Node(x, [ Node(y, [ Node(u), Node(v) ]) ])
-private let descendentChain: Parser<Node>.Function = (descendents ++ ((optionalSpace ++ group) | const([]))) --> uncurry(Node.byAppendingChildren)
+private let descendentChain: Parser<Node>.Function = (descendents ++ ((optionalSpace ++ group) | const([]))) --> uncurry(Node.nodeByAppendingChildren)
 
 /// Parses a sequence of adjacent sibling elements, e.g.:
 ///
@@ -150,7 +150,7 @@ public let adjacent: Parser<[Node]>.Function = lazy { interleave(separator, desc
 private let group = lazy { ignore(%"(") ++ optionalSpace ++ adjacent ++ optionalSpace ++ ignore(%")") }
 
 private let subgraph: Int -> Parser<[Node]>.Function = { n in
-	(descendents ++ lines(n + 1) --> { [ $0.byAppendingChildren($1) ] }) | adjacent
+	(descendents ++ lines(n + 1) --> { [ $0.nodeByAppendingChildren($1) ] }) | adjacent
 }
 
 private let line: Int -> Parser<[Node]>.Function = fix { line in
