@@ -62,6 +62,7 @@ private let wordChars: Parser<String>.Function = (%(char_word - "'\""))* --> { s
 private let word: Parser<String>.Function = wordStart ++ wordChars --> (+)
 private let string: Parser<String>.Function = (%char_text | %char_space)+ --> { strings in join("", strings) }
 private let br: Parser<()>.Function = ignore(%char_break)
+private let eof: Parser<()>.Function = { $0 == "" ? ((), "") : nil }
 private let comment: Parser<()>.Function = ignore(%"#" ++ string ++ (br | eof))
 private let quoted: Parser<String>.Function = (ignore(%"'") ++ string ++ ignore(%"'")) | (ignore(%"\"") ++ string ++ ignore(%"\""))
 private let requiredSpace: Parser<()>.Function = ignore((comment | %char_space)+)
@@ -77,8 +78,7 @@ func indentation(n: Int) -> Parser<Int>.Function {
 }
 
 // MARK: Generic combinators
-
-// fixme: move these into Madness.
+// FIXME: move these into Madness.
 
 /// Delays the evaluation of a parser so that it can be used in a recursive grammar without deadlocking Swift at runtime.
 private func lazy<T>(parser: () -> Parser<T>.Function) -> Parser<T>.Function {
@@ -112,10 +112,6 @@ private func | <T> (left: Parser<T>.Function, right: String -> T) -> Parser<T>.F
 private func flatMap<T, U>(x: [T], f: T -> [U]) -> [U] {
 	return reduce(lazy(x).map(f), [], +)
 }
-
-
-let eof: Parser<()>.Function = { $0 == "" ? ((), "") : nil }
-
 
 // MARK: OGDL
 
