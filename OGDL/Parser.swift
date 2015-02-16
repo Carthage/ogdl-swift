@@ -49,8 +49,8 @@ internal postfix func |? <T>(parser: Parser<T>.Function) -> Parser<T?>.Function 
 }
 
 private let char_control = NSCharacterSet.controlCharacterSet()
-private let char_text = char_control.invertedSet - NSCharacterSet.whitespaceAndNewlineCharacterSet()
-private let char_word = char_text - ",()"
+private let char_text = char_control.invertedSet - NSCharacterSet.newlineCharacterSet()
+private let char_word = char_text - ",()" - NSCharacterSet.whitespaceCharacterSet()
 private let char_space = NSCharacterSet.whitespaceCharacterSet()
 private let char_break = NSCharacterSet.newlineCharacterSet()
 
@@ -60,11 +60,15 @@ private let char_end = char_control - NSCharacterSet.whitespaceAndNewlineCharact
 private let wordStart: Parser<String>.Function = %(char_word - "#'\"")
 private let wordChars: Parser<String>.Function = (%(char_word - "'\""))* --> { strings in join("", strings) }
 private let word: Parser<String>.Function = wordStart ++ wordChars --> (+)
-private let string: Parser<String>.Function = (%char_text | %char_space)+ --> { strings in join("", strings) }
 private let br: Parser<()>.Function = ignore(%char_break)
 private let eof: Parser<()>.Function = { $0 == "" ? ((), "") : nil }
-private let comment: Parser<()>.Function = ignore(%"#" ++ string ++ (br | eof))
-private let quoted: Parser<String>.Function = (ignore(%"'") ++ string ++ ignore(%"'")) | (ignore(%"\"") ++ string ++ ignore(%"\""))
+private let comment: Parser<()>.Function = ignore(%"#" ++ (%char_text)+ ++ (br | eof))
+// TODO: Escape sequences.
+private let singleQuotedChars: Parser<String>.Function = (%(char_text - "'"))* --> { strings in join("", strings) }
+private let singleQuoted: Parser<String>.Function = ignore(%"'") ++ singleQuotedChars ++ ignore(%"'")
+private let doubleQuotedChars: Parser<String>.Function = (%(char_text - "\""))* --> { strings in join("", strings) }
+private let doubleQuoted: Parser<String>.Function = ignore(%"\"") ++ doubleQuotedChars ++ ignore(%"\"")
+private let quoted: Parser<String>.Function = singleQuoted | doubleQuoted
 private let requiredSpace: Parser<()>.Function = ignore((comment | %char_space)+)
 private let optionalSpace: Parser<()>.Function = ignore((comment | %char_space)*)
 private let separator: Parser<()>.Function = ignore(optionalSpace ++ %"," ++ optionalSpace)
