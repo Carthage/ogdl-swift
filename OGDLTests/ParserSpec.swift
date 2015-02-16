@@ -61,7 +61,8 @@ class ParserSpec: QuickSpec {
 			expect(parsedGraph).to(equal(expectedGraph))
 		}
 
-		it("should parse siblings") {
+		// TODO: Not yet supported. See Carthage/ogdl-swift#6.
+		pending("should parse siblings") {
 			let expectedGraph = [
 				Node(value: "foo", children: [
 					Node(value: "bar")
@@ -76,7 +77,8 @@ class ParserSpec: QuickSpec {
 			expect(parsedGraph).to(equal(expectedGraph))
 		}
 
-		it("should parse grouped siblings") {
+		// TODO: Not yet supported. See Carthage/ogdl-swift#7.
+		pending("should parse grouped siblings") {
 			let expectedGraph = [
 				Node(value: "foo", children: [
 					Node(value: "bar"),
@@ -88,7 +90,8 @@ class ParserSpec: QuickSpec {
 			expect(parsedGraph).to(equal(expectedGraph))
 		}
 
-		it("should parse grouped siblings with children") {
+		// TODO: Not yet supported. See Carthage/ogdl-swift#7.
+		pending("should parse grouped siblings with children") {
 			let expectedGraph = [
 				Node(value: "foo", children: [
 					Node(value: "bar.o", children: [ Node(value: "1.2") ]),
@@ -105,7 +108,8 @@ class ParserSpec: QuickSpec {
 			expect(parsedGraph).to(equal([]))
 		}
 
-		it("should parse Example 2") {
+		// TODO: Not yet supported. See Carthage/ogdl-swift#7.
+		pending("should parse Example 2") {
 			let expectedGraph = [
 				Node(value: "libraries", children: [
 					Node(value: "foo.so", children: [
