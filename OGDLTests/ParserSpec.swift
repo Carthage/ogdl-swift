@@ -61,6 +61,19 @@ class ParserSpec: QuickSpec {
 			expect(parsedGraph).to(equal(expectedGraph))
 		}
 
+		it("should parse quoted nodes") {
+			let expectedGraph = [
+				Node(value: "foo", children: [
+					Node(value: "bar", children: [
+						Node(value: "fuzz buzz")
+					])
+				])
+			]
+
+			let parsedGraph = parse(graph, "foo \"bar\" \"fuzz buzz\"")
+			expect(parsedGraph).to(equal(expectedGraph))
+		}
+
 		// TODO: Not yet supported. See Carthage/ogdl-swift#6.
 		pending("should parse siblings") {
 			let expectedGraph = [
