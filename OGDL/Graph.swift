@@ -9,7 +9,7 @@
 import Foundation
 
 /// Represents a node in an OGDL graph. Nodes are not required to be unique.
-public class Node: Equatable {
+public struct Node: Equatable {
 	/// The value given for this node.
 	public let value: String
 
