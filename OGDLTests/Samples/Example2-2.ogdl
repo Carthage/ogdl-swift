@@ -1,0 +1,5 @@
+# From http://www.ogdl.org/examples.html
+
+libraries
+	foo.so version 1.2
+	bar.so version 2.3

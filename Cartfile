@@ -1,4 +1,4 @@
-github "robrix/Madness" "master"
-github "robrix/Either" "47969a4dfc54e866f8855a9f9dc845139d01c900"
-github "robrix/Box" "9e0e87fa957eaea0660d0027e6286a9dbbe7d42e"
-github "robrix/Prelude" "1ea8d6bd07a6a367aa2ee19d242592a6bc49936b"
+github "robrix/Madness" "significant-indentation"
+github "robrix/Either" ~> 1.1
+github "robrix/Box" ~> 1.0.1
+github "robrix/Prelude" ~> 1.4
